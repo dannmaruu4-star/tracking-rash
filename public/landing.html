@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔗 Redirecting...</h1>
+  <p>You will be redirected in <span id="countdown">3</span> seconds.</p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const target = params.get('target');
+
+    let timeLeft = 3;
+    const countdown = document.getElementById('countdown');
+    const timer = setInterval(() => {
+      timeLeft--;
+      countdown.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        window.location.href = target;
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
